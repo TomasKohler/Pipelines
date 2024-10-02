@@ -14,7 +14,7 @@ phases:
       - echo "Pushing the image"
       - docker push 253490770873.dkr.ecr.us-east-2.amazonaws.com/pipelines/tk-test:latest
 
-    pre_build:
+    post_build:
       commands:
         docker push 253490770873.dkr.ecr.us-east-2.amazonaws.com/pipelines/tk-test:latest
     
