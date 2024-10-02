@@ -3,11 +3,11 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      -echo "loggin in amazon ECR"
+      - echo "Logging in amazon ECR"
       - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 253490770873.dkr.ecr.us-east-2.amazonaws.com
     build:
       on-failure: ABORT
-      - echo "Builing a docker image for you"
+      - echo "Building a docker image for you"
       - docker build -t pipelines/tk-test .
       - echo "Making a tag for the image"
       - docker tag pipelines/tk-test:latest 253490770873.dkr.ecr.us-east-2.amazonaws.com/pipelines/tk-test:latest
@@ -20,5 +20,5 @@ phases:
     
     artifacts:
       files:
-        -'**/*'
+        - '**/*'
       discard-paths: yes
