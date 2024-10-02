@@ -5,7 +5,7 @@ phases:
     commands:
       -echo "loggin in amazon ECR"
       - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 253490770873.dkr.ecr.us-east-2.amazonaws.com
-    builid:
+    build:
       on-failure: ABORT
       - echo "Builing a docker image for you"
       - docker build -t pipelines/tk-test .
